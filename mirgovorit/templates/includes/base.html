@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
+    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+    <title>{{title}}</title>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'cookbook:recipes' %}">Cookbook</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Информация
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
+                            <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
+                            <li><a class="dropdown-item  text-white" href="#}">Про нас</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="#">Корзина</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0;">
+    <!-- Контент -->
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0;">
+        <div class="row mt-1">
+            <div class="col-lg-2">
+                <!-- Пустой блок на Ваше усмотрение -->
+            </div>
+            <div class="col-lg-10">
+                <!-- Контент на странице -->
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Svitsov 2024</p>
+    </div>
+</footer>
+<script src="{% static 'deps/js/jquery/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'deps/js/jquery-events.js' %}"></script>
+<script src="{% static 'deps/js/jquery-ajax.js' %}"></script>
+<script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

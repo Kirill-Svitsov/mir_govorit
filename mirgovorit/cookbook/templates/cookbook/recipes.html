@@ -1,0 +1,27 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    <h2>Recipes</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe.id }}</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>
+                        {% for recipe_product in recipe.recipeproduct_set.all %}
+                            {{ recipe_product.product.name }} ({{ recipe_product.weight }}g){% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
