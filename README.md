@@ -56,7 +56,11 @@ python manage.py migrate
 Также для мануального тестирования предоставлены фикстуры. Для заполнения БД выполните следующие команды:
 ```
 python3 manage.py loaddata fixtures/cookbook/product.json
+```
+```
 python3 manage.py loaddata fixtures/cookbook/recipe.json
+```
+```
 python3 manage.py loaddata fixtures/cookbook/recipeproduct.json
 ```
 После этого можно запускать сервер:
