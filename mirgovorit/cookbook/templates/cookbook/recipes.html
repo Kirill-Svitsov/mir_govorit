@@ -1,27 +1,55 @@
 {% extends 'includes/base.html' %}
 
 {% block content %}
-    <h2>Recipes</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Products</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container mt-5">
+        <div class="row">
             {% for recipe in recipes %}
-                <tr>
-                    <td>{{ recipe.id }}</td>
-                    <td>{{ recipe.name }}</td>
-                    <td>
-                        {% for recipe_product in recipe.recipeproduct_set.all %}
-                            {{ recipe_product.product.name }} ({{ recipe_product.weight }}g){% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                </tr>
+                <div class="col-md-12">
+                    <div class="card mb-4 custom-shadow recipe-card" style="width: fit-content;">
+                        <!-- Описание рецепта -->
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'cookbook:recipe_detail' recipe.id %}">{{ recipe.name }}</a>
+                            </h5>
+                            <div class="recipe-table">
+                                {% for recipe_product in recipe.recipeproduct_set.all %}
+                                    <div class="recipe-product">
+                                        <a href="{% url 'cookbook:product_detail' recipe_product.product.id %}">
+                                            <p class="card-text"><strong>{{ recipe_product.product.name }}</strong></p>
+                                        </a>
+                                        <p>Product ID: {{ recipe_product.product.id }}</p>
+                                        <p>Вес в рецепте: <strong>{{ recipe_product.weight }}</strong>г,</p>
+                                        <p>Количество использований: <strong>{{ recipe_product.product.times_cooked }}</strong></p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Форма добавления продукта -->
+                            <form method="post" action="{% url 'cookbook:add_product_to_recipe' recipe.id %}" id="addProductForm">
+                                {% csrf_token %}
+                                <label for="product">Выберите продукт:</label>
+                                <select name="product" id="product">
+                                    {% for product in products %}
+                                        <option value="{{ product.id }}">{{ product.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="weight">Введите вес:</label>
+                                <input type="number" name="weight" id="weight" required>
+                                <button type="submit">Добавить</button>
+                            </form>
+                            <!-- Форма "Приготовить" -->
+                            <form method="post" action="{% url 'cookbook:cook_recipe' recipe.id %}" id="cookRecipeForm">
+                                {% csrf_token %}
+                                <button type="submit" id="cookButton">
+                                    Приготовить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
 {% endblock %}
+
+
+

@@ -1,0 +1,47 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4 custom-shadow recipe-card" style="width: fit-content;">
+                    <!-- Описание рецепта -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.name }}</h5>
+                        <hr>
+                        <h5 class="card-title">Ингредиенты</h5>
+                        <hr>
+                        <div class="recipe-table">
+                            {% for recipe_product in recipe.recipeproduct_set.all %}
+                                <div class="recipe-product">
+                                    <a href="{% url 'cookbook:product_detail' recipe_product.product.id %}">
+                                        <p class="card-text"><strong>{{ recipe_product.product.name }}</strong></p>
+                                    </a>
+                                    <p class="card-text">Вес в рецепте: <strong>{{ recipe_product.weight }}</strong>г,</p>
+                                    <p class="card-text">Количество использований: <strong>{{ recipe_product.product.times_cooked }}</strong></p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <h4>Добавить ингредиент в рецепт</h4>
+                        <!-- Форма добавления продукта -->
+                        <form method="post" action="{% url 'cookbook:add_product_to_recipe' recipe.id %}">
+                            {% csrf_token %}
+                            <label for="product">Выберите продукт:</label>
+                            <br>
+                            <select name="product" id="product">
+                                {% for product in products %}
+                                    <option value="{{ product.id }}">{{ product.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <label for="weight">Введите вес:</label>
+                            <input type="number" name="weight" id="weight" required>
+                            <br>
+                            <button type="submit">Добавить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

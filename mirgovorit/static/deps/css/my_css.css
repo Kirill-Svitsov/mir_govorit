@@ -1,7 +1,12 @@
-body {
-  background-color: #FFDEAD;
+html, body {
   height: 100%;
   margin: 0;
+}
+
+body {
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .dropdown-toggle::after {
   content: none;
@@ -10,34 +15,12 @@ body {
 .custom-shadow {
   box-shadow: 5px 5px 25px 19px #000000;
 }
-
-.product_id {
-  color: gray;
-  font-size: 15px;
-}
-
-.badge.bg-warning.text-dark {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  z-index: 1;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  box-shadow: 2px 2px 15px 9px #000000;
-}
-
-.badge-banner {
-  top: 80%;
-  border-radius: 15px;
-  font-size: 0.7rem;
-}
+/* Стиль для логотипа */
 .navbar-brand {
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-    color: white;
+    color: red !important;
     font-weight: bold;
-    /* Дополнительные стили, если необходимо */
-    transition: color 0.3s ease; /* Анимация перехода цвета */
+    transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
@@ -50,14 +33,100 @@ h1 {
 }
 /* Стиль меню */
 /* styles.css */
+a {
+    text-decoration: none;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    color: black !important;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ff8c00 !important;
+}
 .navbar-nav li.nav-item a.nav-link {
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-    color: white !important; /* Добавлено !important, чтобы переопределить другие стили */
+    color: white !important;
     font-weight: bold;
-    /* Дополнительные стили, если необходимо */
-    transition: color 0.3s ease; /* Анимация перехода цвета */
+    transition: color 0.3s ease;
 }
 
 .navbar-nav li.nav-item a.nav-link:hover {
-    color: #ff8c00 !important; /* Оранжевый цвет при наведении */
+    color: #ff8c00 !important;
+}
+
+/* Стиль карточек */
+.recipe-card {
+    width: 100%;
+    max-width: 800px; /* Максимальная ширина карточки */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.recipe-card .card-body {
+    padding: 20px;
+}
+
+.recipe-card h5 {
+    margin-top: 0;
+}
+
+.recipe-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipe-table .recipe-product {
+    width: calc(33.33% - 20px); /* 3 столбца в строке */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #fff;  /* Цвет фона ячейки */
+    padding: 15px;
+    border-radius: 10px;  /* Скругление углов */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* Тень для выделения ячеек */
+}
+
+.recipe-table .recipe-product p {
+    margin-bottom: 5px;
+}
+
+.recipe-table .recipe-product a {
+    text-decoration: none;
+    color: #333;
+}
+
+.recipe-table .recipe-product a:hover {
+    color: #ff8c00;
+}
+
+.recipe-card form {
+    margin-top: 15px;
+}
+
+.recipe-card form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.recipe-card form select,
+.recipe-card form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.recipe-card form button {
+    background-color: grey;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.recipe-card form button:hover {
+    text-decoration: none;
+    background-color: #ff8c00 !important;
 }

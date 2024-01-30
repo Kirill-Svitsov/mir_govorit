@@ -1,0 +1,53 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+<style>
+    h2 {
+    padding: 10px;
+    color: white;
+    background-color: #333;
+    border-radius: 10px;
+    }
+    span.product{
+    color: red;
+    }
+    .custom-table {
+        background-color: #f0f0f0; /* Замените #f0f0f0 на нужный вам цвет фона */
+        border-radius: 10px; /* Задайте значение радиуса скругления углов */
+        overflow: hidden; /* Чтобы скругление было видно, если есть обтекающий контейнер */
+    }
+
+    .custom-table th, .custom-table td {
+        padding: 10px; /* Задайте необходимый внутренний отступ */
+        text-align: left; /* Выравнивание текста */
+    }
+
+    .custom-table th {
+        background-color: #333; /* Замените #333 на нужный вам цвет заголовков */
+        color: white;
+    }
+
+    .custom-table tr:nth-child(even) {
+        background-color: #e0e0e0; /* Замените #e0e0e0 на нужный вам цвет фона для четных строк */
+    }
+</style>
+<div class="container mt-5">
+    <h2>Рецепты без <span class="product">{{ product.name }}</span> или с количеством менее 10 грамм</h2>
+    <table class="table custom-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название рецепта</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipe in recipes %}
+        <tr>
+            <td>{{ recipe.id }}</td>
+            <td>{{ recipe.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

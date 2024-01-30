@@ -1,0 +1,26 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4 custom-shadow recipe-card" style="width: fit-content;">
+                        <!-- Описание продукта -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">Количество использований: {{ product.times_cooked }}</p>
+                            <hr>
+                            <p class="card-text">
+                                <a href="{% url 'cookbook:show_recipes_without_product' product.id %}">
+                                    Рецепты без {{ product.name }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

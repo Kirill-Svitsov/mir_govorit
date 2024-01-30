@@ -9,7 +9,7 @@ class RecipeProductInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'times_cooked')
+    list_display = ('id', 'name', 'times_cooked')
     search_fields = ('name',)
     list_filter = ('times_cooked',)
     verbose_name = 'Продукт'
